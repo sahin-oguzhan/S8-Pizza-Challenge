@@ -1,14 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useHistory, NavLink } from 'react-router-dom';
-import {
-  Button,
-  ButtonGroup,
-  Form,
-  FormFeedback,
-  FormGroup,
-  Input,
-  Label,
-} from 'reactstrap';
+import { Button, ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
 import axios from 'axios';
 
 const extras = [
@@ -33,6 +25,7 @@ const pizza = {
   puan: 4.9,
   yorum: 200,
 };
+
 const initialData = {
   boyut: '',
   kalınlık: '',
@@ -41,6 +34,7 @@ const initialData = {
   ordernote: '',
   adet: 1,
 };
+
 export default function Order() {
   const [formData, setFormData] = useState(initialData);
   const [isValid, setIsValid] = useState(false);
@@ -101,14 +95,23 @@ export default function Order() {
   function handleSubmit(event) {
     event.preventDefault();
     if (!isValid) return;
-    history.push('/success');
     axios
-      .post(' https://reqres.in/api/pizza', formData)
-      .then((response) => console.log(response.data));
+      .post('https://reqres.in/api/pizza', formData, {
+        headers: {
+          'x-api-key': 'reqres-free-v1',
+        },
+      })
+      .then((response) => {
+        console.log('API Yanıtı:', response.data);
+        history.push('/success');
+      })
+      .catch((error) => {
+        console.error(`API Hatası: ${error}`);
+      });
   }
 
   return (
-    <>
+    <body>
       <header>
         <div className="logo">
           <img src="/images/iteration-1-images/logo.svg" alt="" />
@@ -150,13 +153,14 @@ export default function Order() {
       <Form onSubmit={handleSubmit}>
         <div className="boyut">
           <div>
-            <Label>
+            <Label style={{ color: 'black', fontWeight: 'bold' }}>
               {' '}
               Boyut Seç
               <span className="text-danger">*</span>
             </Label>
             <FormGroup>
               <Input
+                data-cy="küçük"
                 name="boyut"
                 type="radio"
                 id="küçük"
@@ -192,7 +196,10 @@ export default function Order() {
 
           <div className="crust">
             <FormGroup>
-              <Label for="kalınlık">
+              <Label
+                for="kalınlık"
+                style={{ color: 'black', fontWeight: 'bold' }}
+              >
                 Hamur Seç <span className="text-danger">*</span>
               </Label>
               <Input
@@ -201,6 +208,7 @@ export default function Order() {
                 type="select"
                 value={formData.kalınlık}
                 onChange={handleChange}
+                data-cy="kalınlık"
               >
                 <option value="" disabled hidden>
                   Hamur Kalınlığı
@@ -216,7 +224,7 @@ export default function Order() {
           <Label style={{ color: 'black', fontWeight: 'bold' }}>
             Ek Malzemeler
           </Label>
-          <p>En fazla 10 malzeme seçebilirsiniz. 5TL</p>
+          <p>En az 4 en fazla 10 malzeme seçebilirsiniz. 5TL</p>
         </div>
         <div className="extras">
           {extras.map((item, index) => {
@@ -229,6 +237,7 @@ export default function Order() {
                   onChange={handleChange}
                   value={item}
                   checked={formData.ekstra.includes(item)}
+                  data-cy="extras"
                 />{' '}
                 <Label htmlFor={index}>{item}</Label>
               </FormGroup>
@@ -237,7 +246,12 @@ export default function Order() {
         </div>
 
         <FormGroup>
-          <Label for="exampleEmail">İsminiz:</Label>
+          <Label
+            for="exampleEmail"
+            style={{ color: 'black', fontWeight: 'bold' }}
+          >
+            İsminiz:
+          </Label>
           <Input
             id="isim"
             name="isim"
@@ -245,10 +259,11 @@ export default function Order() {
             type="text"
             value={formData.isim}
             onChange={handleChange}
+            data-cy="isim"
           />
         </FormGroup>
         <FormGroup>
-          <Label for="ordernote">
+          <Label for="ordernote" style={{ color: 'black', fontWeight: 'bold' }}>
             Siparişine eklemek istediğin bir not var mı?
           </Label>
           <Input
@@ -289,7 +304,9 @@ export default function Order() {
           </div>
 
           <div className="total">
-            <h5>Sipariş Toplamı</h5>
+            <h5 style={{ color: 'black', fontWeight: 'bold' }}>
+              Sipariş Toplamı
+            </h5>
             <h6>Seçimler {formData.ekstra.length * 5}TL</h6>
             <h6 style={{ color: '#CE2829' }}>
               Toplam{' '}
@@ -304,12 +321,13 @@ export default function Order() {
                 width: '100%',
               }}
               disabled={!isValid}
+              data-cy="submit"
             >
               SİPARİŞ VER
             </Button>
           </div>
         </div>
       </Form>
-    </>
+    </body>
   );
 }

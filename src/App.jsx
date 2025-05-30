@@ -13,6 +13,38 @@ import './components/Success/Success.css';
 import Home from './components/Home/Home';
 import './components/Home/Home.css';
 
+const pizza = {
+  isim: 'Position Absolute Acı Pizza',
+  fiyat: '85.50',
+  puan: 4.9,
+  yorum: 200,
+};
+
+const initialData = {
+  boyut: '',
+  kalınlık: '',
+  ekstra: [],
+  isim: '',
+  ordernote: '',
+  adet: 1,
+};
+
+const extras = [
+  'Pepperoni',
+  'Sosis',
+  'Kanada Jambonu',
+  'Tavuk Izgara',
+  'Soğan',
+  'Domates',
+  'Mısır',
+  'Sucuk',
+  'Jalapeno',
+  'Sarımsak',
+  'Biber',
+  'Ananas',
+  'Kabak',
+];
+
 function App() {
   return (
     <BrowserRouter>
@@ -24,7 +56,7 @@ function App() {
           <Order />
         </Route>
         <Route path="/success">
-          <Success />
+          <Success baslik={pizza.isim} />
         </Route>
       </Switch>
     </BrowserRouter>

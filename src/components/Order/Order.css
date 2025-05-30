@@ -1,5 +1,8 @@
+body {
+  background-color: white;
+}
+
 header {
-  background-color: #ce2829;
   width: 100vw;
   height: 40vh;
   display: flex;
@@ -33,6 +36,8 @@ header img {
   font-size: 0.9vw;
   padding: 20px;
   color: #292929;
+  background-color: white;
+  border: 1px solid purple;
 }
 
 .pizza-card h1,
