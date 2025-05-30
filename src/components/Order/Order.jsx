@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useHistory, NavLink } from 'react-router-dom';
 import {
   Button,
   ButtonGroup,
@@ -8,6 +9,7 @@ import {
   Input,
   Label,
 } from 'reactstrap';
+import axios from 'axios';
 
 const extras = [
   'Pepperoni',
@@ -49,13 +51,12 @@ export default function Order() {
     isim: true,
   });
 
+  let history = useHistory();
+
   useEffect(() => {
-    if (errors.boyut && errors.kalınlık && errors.ekstra && errors.isim) {
-      setIsValid(true);
-    } else {
-      setIsValid(false);
-    }
-  }, [formData]);
+    const hasErrors = Object.values(errors).some((error) => error === true);
+    setIsValid(!hasErrors);
+  }, [errors]);
 
   function handleChange(event) {
     const { value, type, checked, name } = event.target;
@@ -88,10 +89,10 @@ export default function Order() {
     } else if (name === 'kalınlık') {
       newErrors.kalınlık = !newFormData.kalınlık;
     } else if (name === 'isim') {
-      newErrors.isim = newFormData.isim.trim().length < 2;
+      newErrors.isim = newFormData.isim.trim().length < 3;
     } else if (name === 'ekstra') {
       newErrors.ekstra =
-        newFormData.ekstra.length < 3 || newFormData.ekstra.length > 10;
+        newFormData.ekstra.length < 4 || newFormData.ekstra.length > 10;
     }
 
     setErrors(newErrors);
@@ -99,12 +100,34 @@ export default function Order() {
 
   function handleSubmit(event) {
     event.preventDefault();
+    if (!isValid) return;
+    history.push('/success');
+    axios
+      .post(' https://reqres.in/api/pizza', formData)
+      .then((response) => console.log(response.data));
   }
 
   return (
     <>
       <header>
-        <img src="/images/iteration-1-images/logo.svg" alt="" />
+        <div className="logo">
+          <img src="/images/iteration-1-images/logo.svg" alt="" />
+        </div>
+        <div className="nav">
+          <NavLink
+            to="/"
+            exact
+            style={{ textDecoration: 'none', color: 'white' }}
+          >
+            Anasayfa - <br />
+          </NavLink>
+          <NavLink
+            to="/order"
+            style={{ textDecoration: 'none', color: 'white' }}
+          >
+            Sipariş Oluştur
+          </NavLink>
+        </div>
       </header>
 
       <div className="pizza-card">

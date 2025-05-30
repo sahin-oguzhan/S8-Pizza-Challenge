@@ -1,0 +1,30 @@
+.body {
+  width: 100vw;
+  height: 100vh;
+  background-color: red;
+  font-family: 'Roboto Condensed';
+}
+
+.success {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.success img {
+  padding-top: 70px;
+}
+
+.text {
+  width: 50vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'Roboto Condensed';
+  color: #ffffff;
+}

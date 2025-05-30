@@ -3,11 +3,23 @@ header {
   width: 100vw;
   height: 40vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 100vw;
+  height: 80%;
 }
 
 header img {
   width: 20vw;
+  height: auto;
+}
+
+.nav {
+  width: 50vw;
   height: auto;
 }
 
