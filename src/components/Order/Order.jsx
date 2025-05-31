@@ -2,41 +2,17 @@ import { useEffect, useState } from 'react';
 import { useHistory, NavLink } from 'react-router-dom';
 import { Button, ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
 import axios from 'axios';
+import Header from '../Header/Header';
+import '../Header/Header.css';
+import OrderTotal from './OrderTotal';
 
-const extras = [
-  'Pepperoni',
-  'Sosis',
-  'Kanada Jambonu',
-  'Tavuk Izgara',
-  'Soğan',
-  'Domates',
-  'Mısır',
-  'Sucuk',
-  'Jalapeno',
-  'Sarımsak',
-  'Biber',
-  'Ananas',
-  'Kabak',
-];
-
-const pizza = {
-  isim: 'Position Absolute Acı Pizza',
-  fiyat: '85.50',
-  puan: 4.9,
-  yorum: 200,
-};
-
-const initialData = {
-  boyut: '',
-  kalınlık: '',
-  ekstra: [],
-  isim: '',
-  ordernote: '',
-  adet: 1,
-};
-
-export default function Order() {
-  const [formData, setFormData] = useState(initialData);
+export default function Order({
+  formData,
+  setFormData,
+  extras,
+  pizza,
+  colors,
+}) {
   const [isValid, setIsValid] = useState(false);
   const [errors, setErrors] = useState({
     boyut: true,
@@ -111,27 +87,22 @@ export default function Order() {
   }
 
   return (
-    <body>
-      <header>
-        <div className="logo">
-          <img src="/images/iteration-1-images/logo.svg" alt="" />
-        </div>
-        <div className="nav">
-          <NavLink
-            to="/"
-            exact
-            style={{ textDecoration: 'none', color: 'white' }}
-          >
-            Anasayfa - <br />
-          </NavLink>
-          <NavLink
-            to="/order"
-            style={{ textDecoration: 'none', color: 'white' }}
-          >
-            Sipariş Oluştur
-          </NavLink>
-        </div>
-      </header>
+    <>
+      <Header>
+        <NavLink
+          to="/"
+          exact
+          style={{
+            textDecoration: 'none',
+            color: 'white',
+          }}
+        >
+          Anasayfa - <br />
+        </NavLink>
+        <NavLink to="/order" style={{ textDecoration: 'none', color: 'white' }}>
+          Sipariş Oluştur
+        </NavLink>
+      </Header>
 
       <div className="pizza-card">
         <h1>{pizza.isim}</h1>
@@ -164,8 +135,8 @@ export default function Order() {
                 name="boyut"
                 type="radio"
                 id="küçük"
-                value="küçük"
-                checked={formData.boyut === 'küçük'}
+                value="Küçük"
+                checked={formData.boyut === 'Küçük'}
                 onChange={handleChange}
               />
               <Label htmlFor="küçük">Küçük</Label>
@@ -175,8 +146,8 @@ export default function Order() {
                 name="boyut"
                 type="radio"
                 id="orta"
-                value="orta"
-                checked={formData.boyut === 'orta'}
+                value="Orta"
+                checked={formData.boyut === 'Orta'}
                 onChange={handleChange}
               />
               <Label htmlFor="orta">Orta</Label>
@@ -186,8 +157,8 @@ export default function Order() {
                 name="boyut"
                 type="radio"
                 id="büyük"
-                value="büyük"
-                checked={formData.boyut === 'büyük'}
+                value="Büyük"
+                checked={formData.boyut === 'Büyük'}
                 onChange={handleChange}
               />{' '}
               <Label htmlFor="büyük">Büyük</Label>
@@ -213,9 +184,9 @@ export default function Order() {
                 <option value="" disabled hidden>
                   Hamur Kalınlığı
                 </option>
-                <option value="ince kenar">İnce Kenar</option>
-                <option value="normal kenar">Normal Kenar</option>
-                <option value="kalın kenar">Kalın Kenar</option>
+                <option value="İnce Kenar">İnce Kenar</option>
+                <option value="Normal Kenar">Normal Kenar</option>
+                <option value="Kalın Kenar">Kalın Kenar</option>
               </Input>
             </FormGroup>
           </div>
@@ -304,16 +275,13 @@ export default function Order() {
           </div>
 
           <div className="total">
-            <h5 style={{ color: 'black', fontWeight: 'bold' }}>
-              Sipariş Toplamı
-            </h5>
-            <h6>Seçimler {formData.ekstra.length * 5}TL</h6>
-            <h6 style={{ color: '#CE2829' }}>
-              Toplam{' '}
-              {(Number(pizza.fiyat) + formData.ekstra.length * 5) *
-                formData.adet}
-              TL
-            </h6>
+            <OrderTotal
+              pizza={pizza}
+              formData={formData}
+              color1={colors.black}
+              color2={colors.darkgray}
+              color3={colors.red}
+            />
             <Button
               style={{
                 backgroundColor: '#FDC913',
@@ -328,6 +296,6 @@ export default function Order() {
           </div>
         </div>
       </Form>
-    </body>
+    </>
   );
 }

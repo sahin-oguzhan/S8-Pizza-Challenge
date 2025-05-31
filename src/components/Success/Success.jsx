@@ -1,98 +1,59 @@
-export default function Success({ baslik }) {
+import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
+import '../Header/Header.css';
+import '../Footer/Footer.css';
+import OrderTotal from '../Order/OrderTotal';
+import '../Order/OrderTotal.css';
+
+export default function Success({
+  baslik,
+  boyut,
+  kalınlık,
+  ekstra,
+  isim,
+  pizza,
+  formData,
+  colors,
+}) {
   return (
-    <body>
+    <main>
       <div className="body">
-        <div className="success">
-          <img src="/images/iteration-1-images/logo.svg" alt="" />
-          <div className="text">
+        <main className="success">
+          <Header />
+          <section className="text">
             <h1 style={{ color: '#FDC913', fontFamily: 'Satisfy' }}>
               lezzetin yolda
             </h1>
             <h1 data-cy="success">
-              SİPARİŞİNİZ ALINDI {baslik}{' '}
-              <hr style={{ border: '2px solid white' }} />
+              SİPARİŞİNİZ ALINDI <br />
+              {isim} <hr style={{ border: '2px solid white' }} />
             </h1>
-          </div>
-        </div>
+            <div className="order-info">
+              <h2>{baslik}</h2>
+              <h6>
+                Boyut: <span style={{ fontWeight: 'bold' }}>{boyut}</span>
+              </h6>
+              <h6>
+                Hamur: <span style={{ fontWeight: 'bold' }}>{kalınlık}</span>
+              </h6>
+              <h6>
+                Ekstralar:{' '}
+                <span style={{ fontWeight: 'bold' }}>{ekstra.join(', ')}</span>
+              </h6>
+            </div>
+            <div className="order-total">
+              <OrderTotal
+                pizza={pizza}
+                formData={formData}
+                color1={colors.white}
+                color2={colors.white}
+                color3={colors.white}
+              />
+            </div>
+          </section>
+        </main>
       </div>
-      <footer>
-        <div className="main-top">
-          <div className="left-side">
-            <img
-              src="images/iteration-2-images/footer/logo-footer.svg"
-              alt=""
-            />
-            <ul>
-              <li className="text1">
-                <img
-                  src="images/iteration-2-images/footer/icons/icon-1.png"
-                  alt=""
-                />
-                341 Londonderry Road, İstanbul Türkiye
-              </li>
-              <li>
-                <img
-                  src="images/iteration-2-images/footer/icons/icon-2.png"
-                  alt=""
-                />
-                aciktim@teknolojikyemekler.com
-              </li>
-              <li>
-                <img
-                  src="images/iteration-2-images/footer/icons/icon-3.png"
-                  alt=""
-                />
-                +90 216 123 45 67
-              </li>
-            </ul>
-          </div>
-          <div className="mid">
-            <p>Hot Menu</p>
-            <ul>
-              <li>Terminal Pizza</li>
-              <li>5 Kişilik Hackathlon Pizza</li>
-              <li>useEffect Tavuklu Pizza</li>
-              <li>Beyaz Console Frosty</li>
-              <li>Testler Geçti Mutlu Burger</li>
-              <li>Position Absolute Acı Burger</li>
-            </ul>
-          </div>
-          <div className="right-side">
-            <div className="right-text">
-              <p>Instagram</p>
-            </div>
-            <div className="insta-img">
-              <img
-                src="images/iteration-2-images/footer/insta/li-0.png"
-                alt=""
-              />
-              <img
-                src="images/iteration-2-images/footer/insta/li-1.png"
-                alt=""
-              />
-              <img
-                src="images/iteration-2-images/footer/insta/li-2.png"
-                alt=""
-              />
-              <img
-                src="images/iteration-2-images/footer/insta/li-3.png"
-                alt=""
-              />
-              <img
-                src="images/iteration-2-images/footer/insta/li-4.png"
-                alt=""
-              />
-              <img
-                src="images/iteration-2-images/footer/insta/li-5.png"
-                alt=""
-              />
-            </div>
-          </div>
-        </div>
-        <div className="main-bottom">
-          <p>© 2023 Teknolojik Yemekler.</p>
-        </div>
-      </footer>
-    </body>
+      <Footer />
+    </main>
   );
 }

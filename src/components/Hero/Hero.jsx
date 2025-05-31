@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-export default function Home() {
+export default function Hero() {
   return (
     <div className="banner">
       <div className="banner-text">

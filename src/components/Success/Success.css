@@ -1,8 +1,11 @@
-body {
+main {
   width: 100vw;
   height: 100vh;
   background-color: #ce2829;
   font-family: 'Roboto Condensed';
+  display: flex;
+  flex-direction: column;
+  flex: auto;
 }
 
 .success {
@@ -14,125 +17,49 @@ body {
   align-items: center;
 }
 
+.succes-logo {
+  width: 100vw;
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+}
+
 .success img {
   padding-top: 70px;
 }
 
 .text {
-  width: 50vw;
-  height: 60vh;
+  width: 100vw;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  text-align: center;
   align-items: center;
   font-family: 'Roboto Condensed';
   color: #ffffff;
-  border: 1px solid black;
 }
 
-footer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #1a1a1a;
-  margin-top: 2vw;
-}
-
-.main-top {
-  display: flex;
-  margin: 5vw 20vw;
-  height: 20vw;
-}
-
-.left-side {
-  color: white;
-  width: 30vw;
-  height: auto;
-}
-
-.left-side img {
-  width: 60%;
-  height: auto;
-  margin-bottom: 20%;
-}
-
-.left-side ul,
-.mid ul {
-  margin: 0;
-  padding: 0;
-}
-
-.left-side li {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  line-height: 1.3vw;
-  list-style: none;
+.order-info {
   font-family: 'Barlow';
-  font-size: 1.2vw;
-  margin: 1vw 0;
+  width: 20vw;
 }
 
-.left-side li img {
-  width: 1.5vw;
-  height: auto;
-  margin: 0vw 1vw;
-}
-
-.mid {
-  color: white;
-  width: 30vw;
-  font-family: 'Barlow';
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  margin-left: 10%;
-  margin-top: 10%;
-  gap: 1vw;
-}
-
-.mid p {
-  font-size: 1.5vw;
-}
-
-.mid li {
-  list-style: none;
-  font-size: 1vw;
-  line-height: 2.5vw;
-}
-
-.right-side {
-  color: white;
-  display: flex;
-  flex-direction: column;
-  width: 70%;
-  justify-content: space-around;
-  text-align: start;
-}
-
-.right-text {
-  font-family: 'Barlow';
-  font-size: 2vw;
-}
-
-.insta-img {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5vw;
-}
-
-.insta-img img {
-  width: 30%;
-}
-
-.main-bottom {
-  display: flex;
-  color: white;
-  justify-content: space-around;
+.order-info h2 {
+  font-size: 15px;
+  line-height: 50px;
   text-align: center;
-  align-items: center;
-  font-family: 'Barlow';
-  font-size: 0.7vw;
-  border-top: 0.1px solid #5f5f5f;
-  height: 5vw;
+}
+
+.order-info h6 {
+  font-size: 12px;
+  line-height: 25px;
+  font-weight: 100;
+  text-align: center;
+  padding-right: 15px;
+}
+
+.order-total {
+  width: 20vw;
+  height: 15vh;
 }

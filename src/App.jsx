@@ -10,8 +10,19 @@ import './reset.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Success from './components/Success/Success';
 import './components/Success/Success.css';
-import Home from './components/Home/Home';
-import './components/Home/Home.css';
+import Hero from './components/Hero/Hero';
+import './components/Hero/Hero.css';
+import { useState } from 'react';
+
+const colors = {
+  yellow: '#FDC913',
+  lightgray: '#5F5F5F',
+  darkgray: '#292929',
+  red: '#CE2829',
+  beige: '#FAF7F2',
+  white: 'white',
+  black: 'black',
+};
 
 const pizza = {
   isim: 'Position Absolute Acı Pizza',
@@ -46,17 +57,34 @@ const extras = [
 ];
 
 function App() {
+  const [formData, setFormData] = useState(initialData);
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact>
-          <Home />
+          <Hero />
         </Route>
         <Route path="/order">
-          <Order />
+          <Order
+            formData={formData}
+            setFormData={setFormData}
+            extras={extras}
+            pizza={pizza}
+            colors={colors}
+          />
         </Route>
         <Route path="/success">
-          <Success baslik={pizza.isim} />
+          <Success
+            baslik={pizza.isim}
+            boyut={formData.boyut}
+            kalınlık={formData.kalınlık}
+            ekstra={formData.ekstra}
+            isim={formData.isim}
+            ordernote={formData.ordernote}
+            pizza={pizza}
+            formData={formData}
+            colors={colors}
+          />
         </Route>
       </Switch>
     </BrowserRouter>
