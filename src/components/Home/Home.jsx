@@ -67,7 +67,9 @@ export default function Home() {
           <div className={styles.leftCardText}>
             <p>Özel Lezzetus</p>
             <Link to="/order" style={{ textDecoration: 'none' }}>
-              <button className={styles.orderButton}>SİPARİŞ VER</button>
+              <button data-cy="sipariş1" className={styles.orderButton}>
+                SİPARİŞ VER
+              </button>
             </Link>
           </div>
         </div>
@@ -80,7 +82,9 @@ export default function Home() {
           <div className={styles.rightCardTop}>
             <p>Hackathlon Burger Menü</p>
             <Link to="/order" style={{ textDecoration: 'none' }}>
-              <button className={styles.orderButton}>SİPARİŞ VER</button>
+              <button data-cy="sipariş2" className={styles.orderButton}>
+                SİPARİŞ VER
+              </button>
             </Link>
           </div>
           <img
@@ -94,7 +98,9 @@ export default function Home() {
               kurye
             </p>
             <Link to="/order" style={{ textDecoration: 'none' }}>
-              <button className={styles.orderButton}>SİPARİŞ VER</button>
+              <button data-cy="sipariş3" className={styles.orderButton}>
+                SİPARİŞ VER
+              </button>
             </Link>
           </div>
         </div>

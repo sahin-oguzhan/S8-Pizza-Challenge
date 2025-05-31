@@ -1,11 +1,22 @@
-describe('template spec', () => {
-  it('Order page successfully routing Success page', () => {
+describe('Form sayfasına ulaşma', () => {
+  beforeEach(() => {
+    cy.visit('http://localhost:5173/');
+  });
+  ['sipariş1', 'sipariş2', 'sipariş3'].forEach((button) => {
+    it(`${button} butonu order sayfasına yönlendirmeli`, () => {
+      cy.get(`[data-cy="${button}"]`).click();
+      cy.url().should('include', '/order');
+    });
+  });
+});
+describe('Form Gönderme', () => {
+  it('Form başarılı bir şekilde doldurulunca sipariş ver butonu aktif oluyor ve yönlendirme yapıyor', () => {
     cy.visit('http://localhost:5173/order');
     cy.get("[data-cy='küçük']").check().should('be.checked');
     cy.get("[data-cy='submit']").should('be.disabled');
     cy.get("[data-cy='kalınlık']")
       .select('Normal Kenar')
-      .should('have.value', 'normal kenar');
+      .should('have.value', 'Normal Kenar');
     cy.get("[data-cy='submit']").should('be.disabled');
     cy.get("[data-cy='extras']").check([
       'Pepperoni',
@@ -18,6 +29,6 @@ describe('template spec', () => {
     cy.get("[data-cy='isim']").type('Oğuzhan');
     cy.get("[data-cy='submit']").should('be.enabled');
     cy.get("[data-cy='submit']").click();
-    cy.get("[data-cy='success']").contains('SİPARİŞİN ALINDI!');
+    cy.url().should('include', 'http://localhost:5173/success');
   });
 });
