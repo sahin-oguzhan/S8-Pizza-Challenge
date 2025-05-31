@@ -64,7 +64,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" exact>
+        <Route path="/" exact={true}>
           <Hero />
           <Home />
           <Footer />
