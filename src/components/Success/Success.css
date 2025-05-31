@@ -46,20 +46,41 @@ main {
 }
 
 .order-info h2 {
-  font-size: 15px;
+  font-size: 1.5rem;
   line-height: 50px;
   text-align: center;
 }
 
 .order-info h6 {
-  font-size: 12px;
+  font-size: 1rem;
   line-height: 25px;
   font-weight: 100;
   text-align: center;
   padding-right: 15px;
+  padding-bottom: 1rem;
 }
 
 .order-total {
   width: 20vw;
   height: 15vh;
+}
+
+@media (max-width: 768px) {
+  .order-info {
+    width: 70vw;
+    height: 40vh;
+  }
+
+  .order-info h2 {
+    font-size: 2rem;
+  }
+
+  .order-info h6 {
+    font-size: 1.5rem;
+    line-height: 3rem;
+  }
+
+  .order-total {
+    width: 60vw;
+  }
 }

@@ -22,3 +22,10 @@ header img {
   width: 50vw;
   height: auto;
 }
+
+@media (max-width: 768px) {
+  .logo img {
+    width: 80vw;
+    height: auto;
+  }
+}

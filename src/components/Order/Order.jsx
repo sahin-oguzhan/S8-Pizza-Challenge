@@ -1,6 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useHistory, NavLink } from 'react-router-dom';
-import { Button, ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
+import {
+  Button,
+  ButtonGroup,
+  Form,
+  FormFeedback,
+  FormGroup,
+  Input,
+  Label,
+} from 'reactstrap';
 import axios from 'axios';
 import Header from '../Header/Header';
 import OrderTotal from './OrderTotal';
@@ -109,9 +117,9 @@ export default function Order({
         <div className={styles.pizzaInfo}>
           <h3>{pizza.fiyat}TL</h3>
           <p>{pizza.puan}</p>
-          <p>{pizza.yorum}</p>
+          <p>({pizza.yorum})</p>
         </div>
-        <p>
+        <p className={styles.pizzaDesc}>
           Frontend Dev olarak hala position:absolute kullanıyorsan bu çok acı
           pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli
           diğer malzemelerle kaplanmış, daha sonra geleneksel olarak odun
@@ -126,8 +134,10 @@ export default function Order({
           <div>
             <Label style={{ color: 'black', fontWeight: 'bold' }}>
               Boyut Seç
-              <span className="text-danger">*</span>
             </Label>
+            {errors.boyut && (
+              <FormFeedback>Lütfen bir boyut seçin.</FormFeedback>
+            )}
             <FormGroup className={styles.formGroup}>
               <Input
                 data-cy="küçük"
@@ -137,6 +147,7 @@ export default function Order({
                 value="Küçük"
                 checked={formData.boyut === 'Küçük'}
                 onChange={handleChange}
+                invalid={errors.boyut}
               />
               <Label htmlFor="küçük">Küçük</Label>
             </FormGroup>
@@ -148,6 +159,7 @@ export default function Order({
                 value="Orta"
                 checked={formData.boyut === 'Orta'}
                 onChange={handleChange}
+                invalid={errors.boyut}
               />
               <Label htmlFor="orta">Orta</Label>
             </FormGroup>
@@ -159,6 +171,7 @@ export default function Order({
                 value="Büyük"
                 checked={formData.boyut === 'Büyük'}
                 onChange={handleChange}
+                invalid={errors.boyut}
               />
               <Label htmlFor="büyük">Büyük</Label>
             </FormGroup>
@@ -170,8 +183,9 @@ export default function Order({
                 for="kalınlık"
                 style={{ color: 'black', fontWeight: 'bold' }}
               >
-                Hamur Seç <span className="text-danger">*</span>
+                Hamur Seç
               </Label>
+
               <Input
                 id="kalınlık"
                 name="kalınlık"
@@ -179,6 +193,7 @@ export default function Order({
                 value={formData.kalınlık}
                 onChange={handleChange}
                 data-cy="kalınlık"
+                invalid={errors.kalınlık}
               >
                 <option value="" disabled hidden>
                   Hamur Kalınlığı
@@ -187,6 +202,7 @@ export default function Order({
                 <option value="Normal Kenar">Normal Kenar</option>
                 <option value="Kalın Kenar">Kalın Kenar</option>
               </Input>
+              {errors.kalınlık && <FormFeedback></FormFeedback>}
             </FormGroup>
           </div>
         </div>
@@ -194,6 +210,7 @@ export default function Order({
           <Label style={{ color: 'black', fontWeight: 'bold' }}>
             Ek Malzemeler
           </Label>
+          {errors.ekstra && <FormFeedback></FormFeedback>}
           <p>En az 4 en fazla 10 malzeme seçebilirsiniz. 5TL</p>
         </div>
         <div className={styles.extrasContainer}>
@@ -208,6 +225,7 @@ export default function Order({
                   value={item}
                   checked={formData.ekstra.includes(item)}
                   data-cy="extras"
+                  invalid={errors.ekstra}
                 />
                 <Label htmlFor={index}>{item}</Label>
               </FormGroup>
@@ -222,6 +240,7 @@ export default function Order({
           >
             İsminiz:
           </Label>
+
           <Input
             id="isim"
             name="isim"
@@ -230,7 +249,13 @@ export default function Order({
             value={formData.isim}
             onChange={handleChange}
             data-cy="isim"
+            invalid={errors.isim}
           />
+          {errors.isim && (
+            <FormFeedback>
+              Lütfen isminizi giriniz! (En az 3 karakter)
+            </FormFeedback>
+          )}
         </FormGroup>
         <FormGroup>
           <Label for="ordernote" style={{ color: 'black', fontWeight: 'bold' }}>

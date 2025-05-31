@@ -12,14 +12,14 @@
   background-color: white;
 }
 
-.navIcons {
+.icons {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2vw;
 }
 
-.navLink {
+.iconLink {
   display: flex;
   align-items: center;
   gap: 0.5vw;
@@ -29,11 +29,11 @@
   color: black;
 }
 
-.navIcon {
+.iconImg {
   width: 2.8vw;
 }
 
-.cardContainer {
+.card {
   padding-top: 3vw;
   display: flex;
   height: auto;
@@ -51,7 +51,9 @@
   row-gap: 0.5vw;
 }
 
-.cardImage {
+.card1,
+.card2,
+.card3 {
   height: 100%;
   border-radius: 0.5rem;
 }
@@ -72,7 +74,7 @@
   font-weight: bold;
 }
 
-.cardButton {
+.orderButton {
   width: 7vw;
   height: 3vw;
   font-size: 0.7vw;
@@ -86,8 +88,8 @@
   border-color: white;
 }
 
-.rightCardBottom,
-.rightCardTop {
+.rightCardTop,
+.rightCardBot {
   position: absolute;
   display: flex;
   flex-wrap: wrap;
@@ -109,7 +111,7 @@
   font-weight: bold;
 }
 
-.rightCardBottom p {
+.rightCardBot p {
   color: black;
   font-size: 1.7vw;
   font-family: 'Barlow';
@@ -117,7 +119,7 @@
   font-weight: bold;
 }
 
-.highlightText {
+.highlight {
   color: red;
 }
 
@@ -128,13 +130,13 @@
   width: 100%;
 }
 
-.sloganText {
+.slogan2 {
   font-family: 'Barlow';
   font-weight: bold;
   font-size: 2vw;
 }
 
-.sloganText span {
+.slogan2 span {
   font-family: 'Satisfy';
   font-weight: lighter;
 }
@@ -152,7 +154,7 @@
   background-color: #faf7f2;
 }
 
-.pizzaNavLink {
+.pizzaLink {
   display: flex;
   align-items: center;
   gap: 0.5vw;
@@ -166,35 +168,37 @@
   margin: 1vw 0;
 }
 
-.pizzaNavIcon {
+.pizzaIcon {
   width: 2vw;
 }
 
-.activePizzaLink {
+.activePizza {
   background-color: #292929;
   color: white;
 }
 
-.pizzaCardContainer {
+.pizzaCard {
   display: flex;
   justify-content: space-between;
   width: 100%;
   height: 22vw;
 }
 
-.pizzaItemImage {
+.pizzaCard img {
   width: 80%;
   height: auto;
   margin: 2vw auto;
 }
 
-.pizzaItem {
+.pizzaCard1,
+.pizzaCard2,
+.pizzaCard3 {
   width: 17vw;
   height: auto;
   background-color: white;
 }
 
-.pizzaItemText {
+.pizzaText {
   display: flex;
   justify-content: left;
   font-size: 1.2vw;
@@ -203,7 +207,7 @@
   margin: 0.5vw 1vw;
 }
 
-.priceContainer {
+.price {
   display: flex;
   justify-content: space-between;
   font-family: 'Barlow';
@@ -211,7 +215,185 @@
   margin: 0 1vw;
 }
 
-.priceContainer span {
+.price span {
   color: black;
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .allPage {
+  }
+
+  .menu {
+    width: 100vw;
+    height: 15vh;
+  }
+
+  .icons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 60vw;
+    height: 15vh;
+    padding: 2vw 0;
+    row-gap: 2.4vw;
+  }
+
+  .iconLink {
+    width: 40%;
+    height: 20%;
+    justify-content: left;
+    align-items: center;
+    font-size: 3vw;
+    gap: 2vw;
+  }
+
+  .iconImg {
+    width: 4vw;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card {
+    flex-direction: column;
+    width: 100vw;
+    height: auto;
+    align-items: center;
+  }
+
+  .leftCard {
+    width: 60%;
+    height: auto;
+  }
+
+  .leftCardText {
+    width: 50vw;
+    height: 20vh;
+  }
+
+  .leftCardText p {
+    font-size: 10vw;
+    line-height: 10vw;
+    padding-top: 3vw;
+    padding-left: 2vw;
+  }
+
+  .orderButton {
+    width: 25vw;
+    height: 5vh;
+    font-size: 3vw;
+    border-radius: 5vw;
+  }
+
+  .rightCard {
+    width: 60%;
+    height: auto;
+  }
+
+  .rightCardTop,
+  .rightCardBot {
+    width: 30vw;
+  }
+
+  .rightCardBot {
+    margin-top: 30vw;
+  }
+
+  .rightCardTop p,
+  .rightCardBot p {
+    font-size: 4vw;
+  }
+
+  .highlight {
+    color: black;
+    font-weight: bold;
+  }
+
+  .menuSlogan {
+    width: 60vw;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  .slogan2 p {
+    font-size: 5vw;
+  }
+
+  .slogan2Bot {
+    font-size: 8vw;
+  }
+
+  .pizzaMenu {
+    background-color: #faf7f2;
+    width: 60vw;
+    margin: 0 auto;
+  }
+
+  .pizzaNav {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .pizzaLink {
+    width: 40%;
+    height: 20%;
+    font-size: 3vw;
+    justify-content: left;
+    align-items: center;
+  }
+
+  .pizzaIcon {
+    width: 4vw;
+    height: auto;
+  }
+
+  .activePizza {
+    background-color: #292929;
+    color: white;
+  }
+
+  .pizzaCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+  }
+
+  .pizzaImage {
+    width: 100%;
+    margin: 2vw auto;
+  }
+
+  .pizzaCard1,
+  .pizzaCard2,
+  .pizzaCard3 {
+    width: 100%;
+    height: auto;
+  }
+
+  .pizzaText {
+    display: flex;
+    justify-content: left;
+    font-size: 4vw;
+    font-family: 'Barlow';
+    font-weight: bold;
+    margin: 0.5vw 1vw;
+  }
+
+  .price {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Barlow';
+    font-size: 3vw;
+    margin: 0 1vw;
+  }
+
+  .price span {
+    color: black;
+    font-weight: bold;
+  }
 }

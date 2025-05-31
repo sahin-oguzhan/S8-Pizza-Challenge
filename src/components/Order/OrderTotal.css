@@ -13,8 +13,19 @@
 }
 
 .sip {
+  font-size: 2rem;
 }
 
 .sip h6 {
   font-size: 1vw;
+}
+
+@media (max-width: 768px) {
+  .sip-toplam h5 {
+    font-size: 3vw;
+  }
+
+  .sip h6 {
+    font-size: 3vw;
+  }
 }

@@ -1,3 +1,7 @@
+.active {
+  color: red;
+}
+
 .pizzaCard {
   display: flex;
   flex-direction: column;
@@ -13,6 +17,7 @@
 .pizzaCard h1,
 .pizzaCard h3 {
   color: black;
+  font-size: 1vw;
 }
 
 .pizzaInfo {
@@ -20,10 +25,16 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
+  font-size: 1vw;
 }
 
 .pizzaInfo p {
   margin-left: 10px;
+  font-size: 1rem;
+}
+
+.pizzaDesc {
+  font-size: 1rem;
 }
 
 .formContainer {
@@ -104,4 +115,119 @@
 
 .orderFinish {
   display: flex;
+}
+
+@media (max-width: 768px) {
+  .pizzaCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70vw;
+    margin: 0 auto;
+    font-family: 'Barlow';
+    font-size: 0.9vw;
+    padding: 20px;
+    color: #292929;
+  }
+
+  .pizzaCard h1,
+  .pizzaCard h3 {
+    color: black;
+    font-size: 4vw;
+  }
+
+  .pizzaInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .pizzaInfo p {
+    margin-left: 10px;
+    font-size: 3vw;
+  }
+
+  .pizzaDesc {
+    font-size: 3vw;
+  }
+
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 80vw;
+    margin: 2rem auto;
+    color: #292929;
+    font-family: 'Barlow';
+    padding: 2rem;
+    font-size: 2.5vw;
+    background-color: white;
+  }
+
+  .sizeSelection {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .crustOption {
+    width: 1vw;
+  }
+
+  .extrasContainer {
+    column-count: 3;
+  }
+
+  .countButton {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: left;
+    width: 9vw;
+    height: 5vh;
+    margin-right: 20px;
+  }
+
+  .button {
+    width: 3vw;
+    height: 5vh;
+  }
+
+  .count {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 1rem;
+    width: 3vw;
+    height: 5vh;
+    margin: 0 auto;
+    border: 1px #5f5f5f solid;
+    font-family: 'Barlow';
+  }
+
+  .totalContainer {
+    width: 90%;
+    font-family: 'Barlow';
+    text-align: left;
+  }
+
+  .totalButton {
+    width: 1vw;
+
+    font-size: 1vw;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+  }
+
+  .totalContainer h5,
+  .totalContainer h6 {
+    padding-left: 20px;
+    margin: 10px auto;
+  }
+
+  .orderFinish {
+    display: flex;
+  }
 }
