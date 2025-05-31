@@ -5,7 +5,6 @@ import {
 } from 'react-router-dom/cjs/react-router-dom.min';
 import './App.css';
 import Order from './components/Order/Order';
-import './components/Order/Order.css';
 import './reset.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Success from './components/Success/Success';
@@ -13,6 +12,10 @@ import './components/Success/Success.css';
 import Hero from './components/Hero/Hero';
 import './components/Hero/Hero.css';
 import { useState } from 'react';
+import Home from './components/Home/Home';
+
+import Footer from './components/Footer/Footer';
+import './components/Footer/Footer.css';
 
 const colors = {
   yellow: '#FDC913',
@@ -63,6 +66,8 @@ function App() {
       <Switch>
         <Route path="/" exact>
           <Hero />
+          <Home />
+          <Footer />
         </Route>
         <Route path="/order">
           <Order

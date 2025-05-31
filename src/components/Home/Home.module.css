@@ -1,0 +1,217 @@
+.allPage {
+  margin-bottom: 100px;
+}
+
+.menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 2vw;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.navIcons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
+  text-decoration: none;
+  font-family: 'Barlow';
+  font-size: 1vw;
+  color: black;
+}
+
+.navIcon {
+  width: 2.8vw;
+}
+
+.cardContainer {
+  padding-top: 3vw;
+  display: flex;
+  height: auto;
+  gap: 0.3vw;
+  width: 55vw;
+  margin: 0 auto;
+  position: relative;
+}
+
+.leftCard,
+.rightCard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  row-gap: 0.5vw;
+}
+
+.cardImage {
+  height: 100%;
+  border-radius: 0.5rem;
+}
+
+.leftCardText {
+  position: absolute;
+  color: white;
+  width: 15vw;
+  height: auto;
+  padding: 2vw 1vw;
+  line-height: 4vw;
+  row-gap: 2vw;
+}
+
+.leftCardText p {
+  font-family: 'Quattrocento';
+  font-size: 3vw;
+  font-weight: bold;
+}
+
+.cardButton {
+  width: 7vw;
+  height: 3vw;
+  font-size: 0.7vw;
+  border-radius: 2vw;
+  color: red;
+  font-family: 'Barlow';
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: white;
+}
+
+.rightCardBottom,
+.rightCardTop {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  width: 11vw;
+  height: 7vw;
+  margin: 13vw 1vw;
+  row-gap: 0.7vw;
+}
+
+.rightCardTop {
+  margin: 1vw;
+}
+
+.rightCardTop p {
+  font-size: 1.8vw;
+  color: white;
+  font-family: 'Barlow';
+  text-align: left;
+  font-weight: bold;
+}
+
+.rightCardBottom p {
+  color: black;
+  font-size: 1.7vw;
+  font-family: 'Barlow';
+  text-align: left;
+  font-weight: bold;
+}
+
+.highlightText {
+  color: red;
+}
+
+.menuSlogan {
+  justify-content: center;
+  text-align: center;
+  margin: 2vw 0;
+  width: 100%;
+}
+
+.sloganText {
+  font-family: 'Barlow';
+  font-weight: bold;
+  font-size: 2vw;
+}
+
+.sloganText span {
+  font-family: 'Satisfy';
+  font-weight: lighter;
+}
+
+.pizzaMenu {
+  background-color: #faf7f2;
+  width: 55vw;
+  margin: 0 auto;
+}
+
+.pizzaNav {
+  display: flex;
+  justify-content: center;
+  gap: 1vw;
+  background-color: #faf7f2;
+}
+
+.pizzaNavLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5vw;
+  text-decoration: none;
+  font-family: 'Barlow';
+  font-size: 0.7vw;
+  color: black;
+  background-color: white;
+  border-radius: 5vw;
+  padding: 0.3vw 1vw;
+  margin: 1vw 0;
+}
+
+.pizzaNavIcon {
+  width: 2vw;
+}
+
+.activePizzaLink {
+  background-color: #292929;
+  color: white;
+}
+
+.pizzaCardContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 22vw;
+}
+
+.pizzaItemImage {
+  width: 80%;
+  height: auto;
+  margin: 2vw auto;
+}
+
+.pizzaItem {
+  width: 17vw;
+  height: auto;
+  background-color: white;
+}
+
+.pizzaItemText {
+  display: flex;
+  justify-content: left;
+  font-size: 1.2vw;
+  font-family: 'Barlow';
+  font-weight: bold;
+  margin: 0.5vw 1vw;
+}
+
+.priceContainer {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Barlow';
+  font-size: 1vw;
+  margin: 0 1vw;
+}
+
+.priceContainer span {
+  color: black;
+  font-weight: bold;
+}

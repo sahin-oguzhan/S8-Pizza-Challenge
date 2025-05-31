@@ -3,8 +3,8 @@ import { useHistory, NavLink } from 'react-router-dom';
 import { Button, ButtonGroup, Form, FormGroup, Input, Label } from 'reactstrap';
 import axios from 'axios';
 import Header from '../Header/Header';
-import '../Header/Header.css';
 import OrderTotal from './OrderTotal';
+import styles from './Order.module.css';
 
 export default function Order({
   formData,
@@ -104,9 +104,9 @@ export default function Order({
         </NavLink>
       </Header>
 
-      <div className="pizza-card">
+      <div className={styles.pizzaCard}>
         <h1>{pizza.isim}</h1>
-        <div className="pizza-info">
+        <div className={styles.pizzaInfo}>
           <h3>{pizza.fiyat}TL</h3>
           <p>{pizza.puan}</p>
           <p>{pizza.yorum}</p>
@@ -121,15 +121,14 @@ export default function Order({
         </p>
       </div>
 
-      <Form onSubmit={handleSubmit}>
-        <div className="boyut">
+      <Form onSubmit={handleSubmit} className={styles.formContainer}>
+        <div className={styles.sizeSelection}>
           <div>
             <Label style={{ color: 'black', fontWeight: 'bold' }}>
-              {' '}
               Boyut Seç
               <span className="text-danger">*</span>
             </Label>
-            <FormGroup>
+            <FormGroup className={styles.formGroup}>
               <Input
                 data-cy="küçük"
                 name="boyut"
@@ -141,7 +140,7 @@ export default function Order({
               />
               <Label htmlFor="küçük">Küçük</Label>
             </FormGroup>
-            <FormGroup>
+            <FormGroup className={styles.formGroup}>
               <Input
                 name="boyut"
                 type="radio"
@@ -152,7 +151,7 @@ export default function Order({
               />
               <Label htmlFor="orta">Orta</Label>
             </FormGroup>
-            <FormGroup>
+            <FormGroup className={styles.formGroup}>
               <Input
                 name="boyut"
                 type="radio"
@@ -160,12 +159,12 @@ export default function Order({
                 value="Büyük"
                 checked={formData.boyut === 'Büyük'}
                 onChange={handleChange}
-              />{' '}
+              />
               <Label htmlFor="büyük">Büyük</Label>
             </FormGroup>
           </div>
 
-          <div className="crust">
+          <div className={styles.crustContainer}>
             <FormGroup>
               <Label
                 for="kalınlık"
@@ -197,7 +196,7 @@ export default function Order({
           </Label>
           <p>En az 4 en fazla 10 malzeme seçebilirsiniz. 5TL</p>
         </div>
-        <div className="extras">
+        <div className={styles.extrasContainer}>
           {extras.map((item, index) => {
             return (
               <FormGroup key={index}>
@@ -209,7 +208,7 @@ export default function Order({
                   value={item}
                   checked={formData.ekstra.includes(item)}
                   data-cy="extras"
-                />{' '}
+                />
                 <Label htmlFor={index}>{item}</Label>
               </FormGroup>
             );
@@ -246,8 +245,8 @@ export default function Order({
             onChange={handleChange}
           />
         </FormGroup>
-        <div className="order-finish">
-          <div className="count-btn">
+        <div className={styles.orderFinish}>
+          <div className={styles.countButton}>
             <ButtonGroup>
               <Button
                 style={{
@@ -261,7 +260,7 @@ export default function Order({
               >
                 -
               </Button>
-              <div className="count">{formData.adet}</div>
+              <div className={styles.count}>{formData.adet}</div>
               <Button
                 style={{ backgroundColor: '#FDC913', color: 'black' }}
                 type="button"
@@ -274,7 +273,7 @@ export default function Order({
             </ButtonGroup>
           </div>
 
-          <div className="total">
+          <div className={styles.totalContainer}>
             <OrderTotal
               pizza={pizza}
               formData={formData}
@@ -290,6 +289,7 @@ export default function Order({
               }}
               disabled={!isValid}
               data-cy="submit"
+              className={styles.totalButton}
             >
               SİPARİŞ VER
             </Button>
